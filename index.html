@@ -268,18 +268,13 @@
     const key = event.key.toLowerCase();
     const code = event.code;
 
+    // Updated key handling for Yes/No
     if (key === "1" || key === "y" || code === "Numpad1") {
-      document.querySelector('input[value="Done"]').checked = true;
+      document.querySelector('input[value="Yes"]').checked = true;
+      event.preventDefault();
     } else if (key === "2" || key === "n" || code === "Numpad2") {
-      document.querySelector('input[value="Cropped"]').checked = true;
-    } else if (key === "3" || key === "m" || code === "Numpad3") {
-      document.querySelector('input[value="Marketing Material"]').checked = true;
-    } else if (key === "4" || key === "b" || code === "Numpad4") {
-      document.querySelector('input[value="Banner"]').checked = true;
-    } else if (key === "5" || key === "v" || code === "Numpad5") {
-      document.querySelector('input[value="Vehicle Overlapped"]').checked = true;
-    } else if (key === "6" || key === "e" || code === "Numpad6") {
-      document.querySelector('input[value="Editing"]').checked = true;
+      document.querySelector('input[value="No"]').checked = true;
+      event.preventDefault();
     } else if (key === "enter") {
       event.preventDefault();
       submitForm();
@@ -289,5 +284,3 @@
 
 </body>
 </html>
-
-
