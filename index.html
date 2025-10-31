@@ -148,8 +148,9 @@
 
 <div class="controls" id="controlPanel">
   <div class="status-group">
-    <label><input type="radio" name="status" value="Yes">1 - Yes</label>
-    <label><input type="radio" name="status" value="No">2 - No</label>
+    <label><input type="radio" name="status" value="Done">1 - Done</label>
+    <label><input type="radio" name="status" value="Input Swap">2 - Input Swap</label>
+    <label><input type="radio" name="status" value="Issue">3 - Issue</label>
   </div>
   <button onclick="submitForm()">Next</button>
 </div>
@@ -183,7 +184,7 @@
       complete: function(results) {
         data = results.data.filter(row => {
           const status = (row.status || '').trim().toLowerCase();
-          return !["done", "cropped", "marketing material", "banner", "vehicle overlapped", "editing"].includes(status);
+          return !["done", "input swap", "issue"].includes(status);
         });
 
         if (data.length === 0) {
@@ -268,13 +269,12 @@
     const key = event.key.toLowerCase();
     const code = event.code;
 
-    // Updated key handling for Yes/No
-    if (key === "1" || key === "y" || code === "Numpad1") {
-      document.querySelector('input[value="Yes"]').checked = true;
-      event.preventDefault();
-    } else if (key === "2" || key === "n" || code === "Numpad2") {
-      document.querySelector('input[value="No"]').checked = true;
-      event.preventDefault();
+    if (key === "1" || code === "Numpad1") {
+      document.querySelector('input[value="Done"]').checked = true;
+    } else if (key === "2" || code === "Numpad2") {
+      document.querySelector('input[value="Input Swap"]').checked = true;
+    } else if (key === "3" || code === "Numpad3") {
+      document.querySelector('input[value="Issue"]').checked = true;
     } else if (key === "enter") {
       event.preventDefault();
       submitForm();
@@ -284,4 +284,3 @@
 
 </body>
 </html>
-
